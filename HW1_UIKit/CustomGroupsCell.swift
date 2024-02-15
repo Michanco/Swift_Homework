@@ -21,7 +21,7 @@ final class CustomGroupsCell: UITableViewCell{
         let label = UILabel()
         label.text = "groupName"
         label.textColor = .black
-        label.backgroundColor = .green
+        label.backgroundColor = .blue
         return label
     }()
     
@@ -45,16 +45,16 @@ final class CustomGroupsCell: UITableViewCell{
         groupName.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            //photo.topAnchor.constraint(equalTo: contentView.topAnchor),
+            logo.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             logo.centerYAnchor.constraint(equalTo:contentView.centerYAnchor),
             logo.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             logo.heightAnchor.constraint(equalToConstant: 50),
             logo.widthAnchor.constraint(equalToConstant: 70),
             
-            groupName.topAnchor.constraint(equalTo: logo.topAnchor),
+            groupName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             groupName.leadingAnchor.constraint(equalTo: logo.trailingAnchor, constant: 20),
             groupName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            groupName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            groupName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
         
     }

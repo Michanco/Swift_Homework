@@ -12,7 +12,7 @@ final class FriendsViewController: UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemPink
+        view.backgroundColor = .gray
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.barTintColor = .white
     }

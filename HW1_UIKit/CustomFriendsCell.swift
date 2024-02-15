@@ -11,7 +11,7 @@ import UIKit
 final class CustomFriendsCell: UITableViewCell{
     
     private var photo: UIImageView = {
-        let photo = UIImage()
+        let photo = UIImage(named: "SwiftLogo")
         var myImageView = UIImageView(image: photo)
         return myImageView
     }()
@@ -50,6 +50,7 @@ final class CustomFriendsCell: UITableViewCell{
             photo.centerYAnchor.constraint(equalTo:contentView.centerYAnchor),
             photo.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             photo.heightAnchor.constraint(equalToConstant: 50),
+            photo.widthAnchor.constraint(equalTo: photo.heightAnchor),
             
             name.topAnchor.constraint(equalTo: photo.topAnchor),
             name.leadingAnchor.constraint(equalTo: photo.trailingAnchor, constant: 20),
