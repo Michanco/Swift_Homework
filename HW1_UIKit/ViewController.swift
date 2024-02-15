@@ -95,17 +95,22 @@ class ViewController: UIViewController {
     @objc func tap(){
         let tab1 = UINavigationController(rootViewController: FriendsViewController())
         let tab2 = UINavigationController(rootViewController: GroupViewController())
+        let controller = PhotoCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let tab3 = UINavigationController(rootViewController: controller)
         
         tab1.tabBarItem.title = "Friends"
         tab2.tabBarItem.title = "Groups"
+        tab3.tabBarItem.title = "Photo"
         
-        let controllers = [tab1, tab2]
+        let controllers = [tab1, tab2, tab3]
         
         let tabBarControllers = UITabBarController()
         tabBarControllers.viewControllers = controllers
         
         navigationController?.pushViewController(tabBarControllers, animated: true)
+
     }
+
     
     
 

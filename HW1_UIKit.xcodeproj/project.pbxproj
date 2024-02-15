@@ -16,6 +16,7 @@
 		8D5259392B7352E100D63796 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5259382B7352E100D63796 /* ViewController.swift */; };
 		8D52593E2B7352E400D63796 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D52593D2B7352E400D63796 /* Assets.xcassets */; };
 		8D5259412B7352E400D63796 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D52593F2B7352E400D63796 /* LaunchScreen.storyboard */; };
+		8D90D4912B7E073C0030A8BC /* PhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D90D4902B7E073C0030A8BC /* PhotoCollectionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		8D5259422B7352E400D63796 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D5259472B7352E400D63796 /* HW1_UIKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HW1_UIKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5259512B7352E400D63796 /* HW1_UIKitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HW1_UIKitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D90D4902B7E073C0030A8BC /* PhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				8D5259382B7352E100D63796 /* ViewController.swift */,
 				8D409D012B7CA7FC00B5BD6D /* FriendsViewController.swift */,
 				8D409D052B7CB03F00B5BD6D /* GroupViewController.swift */,
+				8D90D4902B7E073C0030A8BC /* PhotoCollectionViewController.swift */,
 				8D52593D2B7352E400D63796 /* Assets.xcassets */,
 				8D52593F2B7352E400D63796 /* LaunchScreen.storyboard */,
 				8D5259422B7352E400D63796 /* Info.plist */,
@@ -244,6 +247,7 @@
 				8D409D002B7C9CD800B5BD6D /* CustomFriendsCell.swift in Sources */,
 				8D409D022B7CA7FC00B5BD6D /* FriendsViewController.swift in Sources */,
 				8D409D042B7CA95000B5BD6D /* CustomGroupsCell.swift in Sources */,
+				8D90D4912B7E073C0030A8BC /* PhotoCollectionViewController.swift in Sources */,
 				8D5259392B7352E100D63796 /* ViewController.swift in Sources */,
 				8D5259352B7352E100D63796 /* AppDelegate.swift in Sources */,
 				8D5259372B7352E100D63796 /* SceneDelegate.swift in Sources */,
