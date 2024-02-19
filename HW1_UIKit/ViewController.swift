@@ -107,6 +107,7 @@ class ViewController: UIViewController {
         let tabBarControllers = UITabBarController()
         tabBarControllers.viewControllers = controllers
         
+        navigationController?.navigationBar.isHidden = true
         navigationController?.pushViewController(tabBarControllers, animated: true)
 
     }

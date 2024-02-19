@@ -12,6 +12,7 @@ final class GroupViewController: UITableViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Groups"
         view.backgroundColor = .gray
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.barTintColor = .white
