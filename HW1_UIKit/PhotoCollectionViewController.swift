@@ -28,7 +28,7 @@ final class PhotoCollectionViewController: UICollectionViewController{
 extension PhotoCollectionViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let wight = UIScreen.main.bounds.width
-        let cellSize = wight / 2 - 20
+        let cellSize = (wight / 2 ) - 20
         return CGSize(width: cellSize, height: cellSize)
     }
 }

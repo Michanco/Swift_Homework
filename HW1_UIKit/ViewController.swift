@@ -6,93 +6,31 @@
 //
 
 import UIKit
+import WebKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController{
     
-    private var myImageView: UIImageView = {
-        let swiftLogoImage = UIImage(named: "SwiftLogo")
-        var myImageView = UIImageView(image: swiftLogoImage)
-        return myImageView
+    private lazy var webView: WKWebView = {   //
+        let webView = WKWebView(frame: view.bounds)
+        webView.navigationDelegate = self
+        return webView
     }()
     
-    private var lable: UILabel = {
-        let lable  = UILabel()
-        lable.text = "Authorization"
-        lable.textAlignment = .center
-        lable.textColor = .black
-        lable.backgroundColor = .green
-        return lable
-    }()
-    
-    private var fieldLogin: UITextField = {
-        let field1 = UITextField()
-        field1.backgroundColor = .gray
-        field1.textColor = .black
-        field1.text = "Login"
-        return field1
-    }()
-    
-    private var fieldPassword: UITextField = {
-        let field1 = UITextField()
-        field1.backgroundColor = .gray
-        field1.textColor = .black
-        field1.text = "Password"
-        return field1
-    }()
-    
-    private var button: UIButton = {
-        let button = UIButton()
-        button.setTitle("LogIN", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.setTitleColor(.red, for: .highlighted)
-        button.backgroundColor = .blue
-        return button
-    }()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        setupViews()
+        
+        let url = URL(string: "https://oauth.vk.com/authorize?client_id=51860886&redirect_uri=https://oauth.vk.com/blank.html&scope=12&display=mobile&response_type=token")
+        webView.load(URLRequest(url: url!))
+    }
     
     private func setupViews(){
-        view.addSubview(myImageView)
-        view.addSubview(lable)
-        view.addSubview(fieldLogin)
-        view.addSubview(fieldPassword)
-        view.addSubview(button)
-        setupConstraints()
+        view.addSubview(webView)
     }
     
-    private func setupConstraints(){
-        
-        myImageView.translatesAutoresizingMaskIntoConstraints = false
-        lable.translatesAutoresizingMaskIntoConstraints = false
-        fieldLogin.translatesAutoresizingMaskIntoConstraints = false
-        fieldPassword.translatesAutoresizingMaskIntoConstraints = false
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([
-            myImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            myImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            lable.topAnchor.constraint(equalTo: myImageView.bottomAnchor, constant: 20),
-            lable.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            lable.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            lable.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            
-            fieldLogin.topAnchor.constraint(equalTo: lable.bottomAnchor, constant: 20),
-            fieldLogin.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            fieldLogin.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            fieldLogin.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            
-            fieldPassword.topAnchor.constraint(equalTo: fieldLogin.bottomAnchor, constant: 20),
-            fieldPassword.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            fieldPassword.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            fieldPassword.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            
-            button.topAnchor.constraint(equalTo: fieldPassword.bottomAnchor, constant: 20),
-            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            button.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30)
-        ])
-    }
-    
-    @objc func tap(){
+
+    private func tap(){
         let tab1 = UINavigationController(rootViewController: FriendsViewController())
         let tab2 = UINavigationController(rootViewController: GroupViewController())
         let controller = PhotoCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
@@ -110,18 +48,40 @@ class ViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
         navigationController?.pushViewController(tabBarControllers, animated: true)
 
+        guard let firstScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let firstWindow = firstScene.windows.first
+            else {
+            return
+        }
+        
+        firstWindow.rootViewController = tabBarController
     }
+}
 
-    
-    
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        button.addTarget(self, action: #selector(tap), for: .touchUpInside)
-        setupViews()
+extension ViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping
+        (WKNavigationResponsePolicy) -> Void) {
+        guard let url = navigationResponse.response.url,
+              url.path == "/blank.html", let fragment = url.fragment else {
+            decisionHandler(.allow)
+            return
+        }
+        let params = fragment
+            .components(separatedBy: "&")
+            .map { $0.components(separatedBy: "=")}
+            .reduce([String: String]()) { result, param in
+                var dict = result
+                let key = param[0]
+                let value = param[1]
+                dict[key] = value
+                return dict
+                
+            }
+        NetworkService.token = params["access_token"]!
+        decisionHandler(.cancel)
+        webView.removeFromSuperview()
+        tap()
     }
-
-
+    
 }
 
