@@ -8,8 +8,27 @@
 import Foundation
 import WebKit
 
-class NetworkService{
-    static var token:String!
+final class NetworkService{
     
+    static var token:String = ""
+    private let session = URLSession.shared
+    
+    func getFriends (){
+        guard let url = URL(string: "https://api.vk.com/method/friends.get?fields=photo_50,online&access_token=\(NetworkService.token)&v=5.131")
+        else{
+            return
+        }
+        session.dataTask(with: url) { (data, _, error) in
+            guard let data = data else {
+                return
+            }
+            do {
+                 let friends = try JSONDecoder().decode(FriendsModel.self, from: data)
+                print(friends)
+            } catch {
+                print(error)
+            }
+        }.resume()
+    }
 }
 

@@ -48,13 +48,13 @@ class ViewController: UIViewController{
         navigationController?.navigationBar.isHidden = true
         navigationController?.pushViewController(tabBarControllers, animated: true)
 
-        guard let firstScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-              let firstWindow = firstScene.windows.first
-            else {
-            return
-        }
-        
-        firstWindow.rootViewController = tabBarController
+//        guard let firstScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+//              let firstWindow = firstScene.windows.first
+//            else {
+//            return
+//        }
+//        
+//        firstWindow.rootViewController = tabBarController
     }
 }
 
