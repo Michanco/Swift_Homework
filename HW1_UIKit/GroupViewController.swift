@@ -10,12 +10,15 @@ import UIKit
 
 final class GroupViewController: UITableViewController{
     
+    private var netvorkService = NetworkService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Groups"
         view.backgroundColor = .gray
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.barTintColor = .white
+        netvorkService.getGroups()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {

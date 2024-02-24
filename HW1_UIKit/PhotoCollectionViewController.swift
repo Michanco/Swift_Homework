@@ -9,11 +9,15 @@ import Foundation
 import UIKit
 
 final class PhotoCollectionViewController: UICollectionViewController{
+    
+    private var networkService = NetworkService()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Photo"
         collectionView.backgroundColor = .brown
         collectionView.register(CustomPhotoCell.self, forCellWithReuseIdentifier: "photoCell")
+        networkService.getPhoto()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

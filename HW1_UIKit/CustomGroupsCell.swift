@@ -13,7 +13,7 @@ final class CustomGroupsCell: UITableViewCell{
     private var logo: UIView = {
         let circle = UIView()
         circle.backgroundColor = .green
-        circle.layer.cornerRadius = 25
+        circle.layer.cornerRadius = 10
         return circle
     }()
     
@@ -46,10 +46,13 @@ final class CustomGroupsCell: UITableViewCell{
         
         NSLayoutConstraint.activate([
             logo.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            //logo.heightAnchor.constraint(equalToConstant: 50),
+            logo.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             logo.centerYAnchor.constraint(equalTo:contentView.centerYAnchor),
             logo.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            logo.heightAnchor.constraint(equalToConstant: 50),
-            logo.widthAnchor.constraint(equalToConstant: 70),
+            logo.trailingAnchor.constraint(equalTo: logo.leadingAnchor, constant: 70),
+            //logo.widthAnchor.constraint(equalToConstant: 70),
+            
             
             groupName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             groupName.leadingAnchor.constraint(equalTo: logo.trailingAnchor, constant: 20),

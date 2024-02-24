@@ -5,14 +5,14 @@
 //  Created by Michanco Slesarev on 22.02.2024.
 //
 
-import Foundation
+//import Foundation
 
 struct FriendsModel: Decodable{
     var response: Friends
 }
 
 struct Friends: Decodable {
-    var friends: [Friend]
+    var items: [Friend]
 }
 
 struct Friend: Decodable{
@@ -30,3 +30,4 @@ struct Friend: Decodable{
         case online
     }
 }
+

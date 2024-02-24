@@ -30,5 +30,42 @@ final class NetworkService{
             }
         }.resume()
     }
+    
+    func getGroups (){
+        guard let url = URL(string: "https://api.vk.com/method/groups.get?user_id=51860886&extended=1&fields=id, name,is_closed,photo_50&access_token=\(NetworkService.token)&v=5.131")
+        else{
+            return
+        }
+        session.dataTask(with: url) { (data, _, error) in
+            guard let data = data else {
+                return
+            }
+            do {
+                 let groups = try JSONDecoder().decode(GroupsModel.self, from: data)
+                print(groups)
+            } catch {
+                print(error)
+            }
+        }.resume()
+    }
+    func getPhoto (){
+        guard let url = URL(string: "https://api.vk.com/method/photos.get?owner_id=51860886&access_token=\(NetworkService.token)&v=5.131")
+        else{
+            return
+        }
+        session.dataTask(with: url) { (data, _, error) in
+            guard let data = data else {
+                return
+            }
+            do {
+                 let photos = try JSONDecoder().decode(PhotoModel.self, from: data)
+                print(photos)
+            } catch {
+                print(error)
+            }
+        }.resume()
+    }
+    
 }
+
 
