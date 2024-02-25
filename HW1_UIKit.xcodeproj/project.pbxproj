@@ -90,6 +90,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D45E6F82B8B36A3009AA5D9 /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				8D89270B2B880B5E001E3D5C /* FriendsModel.swift */,
+				8D409CFF2B7C9CD800B5BD6D /* CustomFriendsCell.swift */,
+				8D409D012B7CA7FC00B5BD6D /* FriendsViewController.swift */,
+			);
+			path = Friends;
+			sourceTree = "<group>";
+		};
+		8D45E6FA2B8B372E009AA5D9 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				8DB937982B89E40500153500 /* GroupsModel.swift */,
+				8D409D052B7CB03F00B5BD6D /* GroupViewController.swift */,
+				8D409D032B7CA95000B5BD6D /* CustomGroupsCell.swift */,
+			);
+			path = Groups;
+			sourceTree = "<group>";
+		};
+		8D45E6FB2B8B3749009AA5D9 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				8DB9379A2B89ED8500153500 /* PhotoModel.swift */,
+				8D90D4902B7E073C0030A8BC /* PhotoCollectionViewController.swift */,
+				8D50681F2B834C10004BE5DD /* CustomPhotoCell.swift */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
 		8D5259282B7352E100D63796 = {
 			isa = PBXGroup;
 			children = (
@@ -112,20 +142,14 @@
 		8D5259332B7352E100D63796 /* HW1_UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				8D45E6FB2B8B3749009AA5D9 /* Photos */,
+				8D45E6FA2B8B372E009AA5D9 /* Groups */,
+				8D45E6F82B8B36A3009AA5D9 /* Friends */,
 				8D5259342B7352E100D63796 /* AppDelegate.swift */,
 				8D5259362B7352E100D63796 /* SceneDelegate.swift */,
-				8D409CFF2B7C9CD800B5BD6D /* CustomFriendsCell.swift */,
 				8D579C7C2B85F76500053612 /* NetworkService.swift */,
-				8D409D032B7CA95000B5BD6D /* CustomGroupsCell.swift */,
-				8D50681F2B834C10004BE5DD /* CustomPhotoCell.swift */,
 				8D5259382B7352E100D63796 /* ViewController.swift */,
-				8D409D012B7CA7FC00B5BD6D /* FriendsViewController.swift */,
-				8D409D052B7CB03F00B5BD6D /* GroupViewController.swift */,
-				8D90D4902B7E073C0030A8BC /* PhotoCollectionViewController.swift */,
-				8D89270B2B880B5E001E3D5C /* FriendsModel.swift */,
-				8DB937982B89E40500153500 /* GroupsModel.swift */,
 				8D52593D2B7352E400D63796 /* Assets.xcassets */,
-				8DB9379A2B89ED8500153500 /* PhotoModel.swift */,
 				8D52593F2B7352E400D63796 /* LaunchScreen.storyboard */,
 				8D5259422B7352E400D63796 /* Info.plist */,
 			);

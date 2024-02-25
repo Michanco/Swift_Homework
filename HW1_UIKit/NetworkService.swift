@@ -49,7 +49,7 @@ final class NetworkService{
         }.resume()
     }
     func getPhoto (){
-        guard let url = URL(string: "https://api.vk.com/method/photos.get?fields=bdate&access_token=\(NetworkService.token)&v=5.131&album_id=profile")
+        guard let url = URL(string: "https://api.vk.com/method/photos.get?fields=51860886&access_token=\(NetworkService.token)&v=5.131&album_id=profile")
         else{
             return
         }
