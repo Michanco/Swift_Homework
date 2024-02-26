@@ -32,7 +32,8 @@ final class NetworkService{
     }
     
     func getGroups (){
-        guard let url = URL(string: "https://api.vk.com/method/groups.get?user_id=51860886&extended=1&fields=id, name,is_closed,photo_50&access_token=\(NetworkService.token)&v=5.131")
+        guard let url = URL(string: "https://api.vk.com/method/groups.get?access_token=\(NetworkService.token)&fields=description&v=5.131&extended=1")
+                
         else{
             return
         }
