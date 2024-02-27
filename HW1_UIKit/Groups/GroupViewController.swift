@@ -11,6 +11,7 @@ import UIKit
 final class GroupViewController: UITableViewController{
     
     private var netvorkService = NetworkService()
+    private var models: [GroupsModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,18 +19,33 @@ final class GroupViewController: UITableViewController{
         view.backgroundColor = .gray
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.barTintColor = .white
-        netvorkService.getGroups()
+        
+        
+        tableView.register(CustomGroupsCell.self, forCellReuseIdentifier: "Cell")
+        
+        netvorkService.getGroups() { [weak self] groups in
+            self?.models = groups
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        5
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        5
+//    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        models.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        CustomGroupsCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        guard let cell = cell as? CustomGroupsCell else {
+            return UITableViewCell()
+        }
+        let model = models[indexPath.row]
+        cell.setupCell(group: model)
+        return cell
     }
 }

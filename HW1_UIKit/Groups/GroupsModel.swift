@@ -20,11 +20,13 @@ struct Group: Decodable{
     var name: String?
     var isClosed : Int?
     var photo: String?
+    var description: String?
     
     enum CodingKeys: String, CodingKey{
         case id
         case name
         case isClosed = "is_closed"
         case photo = "photo_50"
+        case description
     }
 }

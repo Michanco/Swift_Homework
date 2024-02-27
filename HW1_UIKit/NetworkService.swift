@@ -31,7 +31,7 @@ final class NetworkService{
         }.resume()
     }
     
-    func getGroups (){
+    func getGroups (completion: @escaping ([GroupsModel]) -> Void){
         guard let url = URL(string: "https://api.vk.com/method/groups.get?access_token=\(NetworkService.token)&fields=description&v=5.131&extended=1")
                 
         else{
@@ -43,6 +43,7 @@ final class NetworkService{
             }
             do {
                  let groups = try JSONDecoder().decode(GroupsModel.self, from: data)
+                completion(groups) // ERROR Cannot convert value of type 'GroupsModel' to expected argument type '[GroupsModel]'
                 print(groups)
             } catch {
                 print(error)

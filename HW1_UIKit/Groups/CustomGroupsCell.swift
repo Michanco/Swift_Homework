@@ -19,7 +19,7 @@ final class CustomGroupsCell: UITableViewCell{
     
     private var groupName: UILabel = {
         let label = UILabel()
-        label.text = "groupName"
+        //label.text = "groupName"
         label.textColor = .black
         label.backgroundColor = .blue
         return label
@@ -32,6 +32,10 @@ final class CustomGroupsCell: UITableViewCell{
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupCell(group:GroupsModel){
+        groupName.text = group.response.items[0].name
     }
     
     private func setupViews(){
