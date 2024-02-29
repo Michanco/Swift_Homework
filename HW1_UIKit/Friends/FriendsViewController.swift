@@ -11,6 +11,7 @@ import UIKit
 final class FriendsViewController: UITableViewController{
     
     private var networkservice = NetworkService()
+    private var models: [Friend] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,18 +19,32 @@ final class FriendsViewController: UITableViewController{
         view.backgroundColor = .gray
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.barTintColor = .white
-        networkservice.getFriends()
+        
+        tableView.register(CustomFriendsCell.self, forCellReuseIdentifier: "Cell")
+        
+        networkservice.getFriends() { [weak self] friends in
+            self?.models = friends
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        1
-    }
+//    override func numberOfSections(in tableView: UITableView) -> Int {
+//        1
+//    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        models.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        CustomFriendsCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        guard let cell = cell as? CustomFriendsCell else {
+            return UITableViewCell()
+        }
+        let model = models[indexPath.row]
+        cell.setupCell(friend: model)
+        return cell
     }
 }

@@ -10,10 +10,11 @@ import UIKit
 
 final class CustomGroupsCell: UITableViewCell{
     
-    private var logo: UIView = {
-        let circle = UIView()
+    private var logo: UIImageView = {
+        let circle = UIImageView()
         circle.backgroundColor = .green
         circle.layer.cornerRadius = 10
+        circle.layer.masksToBounds = true
         return circle
     }()
     
@@ -21,7 +22,8 @@ final class CustomGroupsCell: UITableViewCell{
         let label = UILabel()
         //label.text = "groupName"
         label.textColor = .black
-        label.backgroundColor = .blue
+        label.backgroundColor = .clear
+        label.layer.cornerRadius = 10
         return label
     }()
     
@@ -34,8 +36,16 @@ final class CustomGroupsCell: UITableViewCell{
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupCell(group:GroupsModel){
-        groupName.text = group.response.items[0].name
+    func setupCell(group:Group){
+        groupName.text = group.name
+        DispatchQueue.global().async {
+            if let url = URL(string: group.photo ?? ""), let data = try? Data(contentsOf: url)
+            {
+                DispatchQueue.main.async {
+                    self.logo.image = UIImage(data: data)
+                }
+            }
+        }
     }
     
     private func setupViews(){
@@ -50,18 +60,18 @@ final class CustomGroupsCell: UITableViewCell{
         
         NSLayoutConstraint.activate([
             logo.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            //logo.heightAnchor.constraint(equalToConstant: 50),
+            logo.heightAnchor.constraint(equalToConstant: 50),
             logo.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-            logo.centerYAnchor.constraint(equalTo:contentView.centerYAnchor),
+            //logo.centerYAnchor.constraint(equalTo:contentView.centerYAnchor),
             logo.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            logo.trailingAnchor.constraint(equalTo: logo.leadingAnchor, constant: 70),
-            //logo.widthAnchor.constraint(equalToConstant: 70),
+            //logo.trailingAnchor.constraint(equalTo: logo.leadingAnchor, constant: 70),
+            logo.widthAnchor.constraint(equalToConstant: 50),
             
             
             groupName.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             groupName.leadingAnchor.constraint(equalTo: logo.trailingAnchor, constant: 20),
             groupName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            groupName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+            //groupName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
         ])
         
     }

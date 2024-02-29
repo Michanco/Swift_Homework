@@ -11,7 +11,7 @@ import UIKit
 final class GroupViewController: UITableViewController{
     
     private var netvorkService = NetworkService()
-    private var models: [GroupsModel] = []
+    private var models: [Group] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,6 @@ final class GroupViewController: UITableViewController{
         view.backgroundColor = .gray
         navigationController?.navigationBar.tintColor = .black
         navigationController?.navigationBar.barTintColor = .white
-        
         
         tableView.register(CustomGroupsCell.self, forCellReuseIdentifier: "Cell")
         

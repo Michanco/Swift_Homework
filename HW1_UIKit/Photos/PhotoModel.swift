@@ -29,5 +29,9 @@ struct Photo: Decodable{
 
 struct Size: Codable{
     var url: String
+    
+    enum CodingKeys: String, CodingKey{
+        case url
+    }
 }
 

@@ -5,7 +5,7 @@
 //  Created by Michanco Slesarev on 22.02.2024.
 //
 
-//import Foundation
+import Foundation
 
 struct FriendsModel: Decodable{
     var response: Friends

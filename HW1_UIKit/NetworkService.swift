@@ -13,7 +13,7 @@ final class NetworkService{
     static var token:String = ""
     private let session = URLSession.shared
     
-    func getFriends (){
+    func getFriends (completion: @escaping ([Friend]) -> Void){
         guard let url = URL(string: "https://api.vk.com/method/friends.get?fields=photo_50,online&access_token=\(NetworkService.token)&v=5.131")
         else{
             return
@@ -31,7 +31,7 @@ final class NetworkService{
         }.resume()
     }
     
-    func getGroups (completion: @escaping ([GroupsModel]) -> Void){
+    func getGroups (completion: @escaping ([Group]) -> Void){
         guard let url = URL(string: "https://api.vk.com/method/groups.get?access_token=\(NetworkService.token)&fields=description&v=5.131&extended=1")
                 
         else{
@@ -43,7 +43,7 @@ final class NetworkService{
             }
             do {
                  let groups = try JSONDecoder().decode(GroupsModel.self, from: data)
-                completion(groups) // ERROR Cannot convert value of type 'GroupsModel' to expected argument type '[GroupsModel]'
+                completion(groups.response.items)
                 print(groups)
             } catch {
                 print(error)
@@ -51,7 +51,7 @@ final class NetworkService{
         }.resume()
     }
     func getPhoto (){
-        guard let url = URL(string: "https://api.vk.com/method/photos.get?fields=51860886&access_token=\(NetworkService.token)&v=5.131&album_id=profile")
+        guard let url = URL(string: "https://api.vk.com/method/photos.get?access_token=\(NetworkService.token)&v=5.131&album_id=profile")
         else{
             return
         }
