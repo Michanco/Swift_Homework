@@ -10,7 +10,13 @@ import UIKit
 
 final class CustomPhotoCell: UICollectionViewCell {
     
-    private let photoView = UIImageView(image: UIImage(systemName: "person"))
+    private let photoView: UIImageView = {
+        let photo = UIImageView()
+        photo.backgroundColor = .clear
+        photo.layer.cornerRadius = 10
+        photo.layer.masksToBounds = true
+        return photo
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,6 +25,17 @@ final class CustomPhotoCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupCell(photo: Photo){
+        DispatchQueue.global().async {
+            if let url = URL(string: photo.sizes[0].url ?? ""), let data = try? Data(contentsOf: url)
+            {
+                DispatchQueue.main.async {
+                    self.photoView.image = UIImage(data: data)
+                }
+            }
+        }
     }
     
     private func setupViews(){

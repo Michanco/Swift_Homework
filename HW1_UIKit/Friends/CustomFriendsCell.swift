@@ -44,7 +44,7 @@ final class CustomFriendsCell: UITableViewCell{
     }
     
     func setupCell(friend:Friend){
-        friendName.text = friend.firstName//"\(friend.firstName ?? "") \(friend.lastName ?? "")"
+        friendName.text = "\(friend.firstName ?? "") \(friend.lastName ?? "")"
         DispatchQueue.global().async {
             if let url = URL(string: friend.photo ?? ""), let data = try? Data(contentsOf: url)
             {

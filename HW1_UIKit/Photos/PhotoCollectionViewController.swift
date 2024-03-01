@@ -11,21 +11,30 @@ import UIKit
 final class PhotoCollectionViewController: UICollectionViewController{
     
     private var networkService = NetworkService()
+    private var models:[Photo] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Photo"
-        collectionView.backgroundColor = .brown
+        collectionView.backgroundColor = .gray
         collectionView.register(CustomPhotoCell.self, forCellWithReuseIdentifier: "photoCell")
-        networkService.getPhoto()
+        
+        networkService.getPhoto() { [weak self] photos in
+            self?.models = photos
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+            }
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        6
+        models.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! CustomPhotoCell
+        let model = models[0]
+        cell.setupCell(photo: model)
         return cell
     }
 }
