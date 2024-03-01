@@ -33,7 +33,7 @@ final class PhotoCollectionViewController: UICollectionViewController{
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "photoCell", for: indexPath) as! CustomPhotoCell
-        let model = models[0]
+        let model = models[0]   //КОСТЫЛЬ!!!!
         cell.setupCell(photo: model)
         return cell
     }

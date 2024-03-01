@@ -29,7 +29,7 @@ final class CustomPhotoCell: UICollectionViewCell {
     
     func setupCell(photo: Photo){
         DispatchQueue.global().async {
-            if let url = URL(string: photo.sizes[0].url ?? ""), let data = try? Data(contentsOf: url)
+            if let url = URL(string: photo.sizes[3].url ?? ""), let data = try? Data(contentsOf: url)
             {
                 DispatchQueue.main.async {
                     self.photoView.image = UIImage(data: data)

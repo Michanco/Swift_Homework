@@ -34,6 +34,12 @@ final class CustomFriendsCell: UITableViewCell{
         return label
     }()
     
+    private var online: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 10
+        return view
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         backgroundColor = .clear
@@ -53,17 +59,21 @@ final class CustomFriendsCell: UITableViewCell{
                 }
             }
         }
+        if friend.online == 1 { online.backgroundColor = .green}
+        else {online.backgroundColor = .red}
     }
     
     private func setupViews(){
         contentView.addSubview(photo)
         contentView.addSubview(friendName)
+        contentView.addSubview(online)
         setupConstraints()
     }
     
     private func setupConstraints(){
         photo.translatesAutoresizingMaskIntoConstraints = false
         friendName.translatesAutoresizingMaskIntoConstraints = false
+        online.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             photo.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
@@ -75,8 +85,13 @@ final class CustomFriendsCell: UITableViewCell{
             
             friendName.topAnchor.constraint(equalTo: photo.topAnchor),
             friendName.leadingAnchor.constraint(equalTo: photo.trailingAnchor, constant: 20),
-            friendName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            friendName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            friendName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50),
+            friendName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            
+            online.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            online.heightAnchor.constraint(equalToConstant: 20),
+            online.widthAnchor.constraint(equalTo: online.heightAnchor),
+            online.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10)
         ])
         
     }
