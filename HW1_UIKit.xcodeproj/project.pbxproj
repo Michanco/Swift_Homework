@@ -20,6 +20,9 @@
 		8D579C7B2B85E8A000053612 /* Arhive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D579C7A2B85E8A000053612 /* Arhive.swift */; };
 		8D579C7D2B85F76500053612 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D579C7C2B85F76500053612 /* NetworkService.swift */; };
 		8D89270C2B880B5E001E3D5C /* FriendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D89270B2B880B5E001E3D5C /* FriendsModel.swift */; };
+		8D8A36672B96FE0F008F48BD /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8A36662B96FE0F008F48BD /* ProfileViewController.swift */; };
+		8D8A36692B96FF23008F48BD /* CustomProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8A36682B96FF23008F48BD /* CustomProfileCell.swift */; };
+		8D8A366B2B970056008F48BD /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8A366A2B970056008F48BD /* ProfileModel.swift */; };
 		8D90D4912B7E073C0030A8BC /* PhotoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D90D4902B7E073C0030A8BC /* PhotoCollectionViewController.swift */; };
 		8DB937992B89E40500153500 /* GroupsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB937982B89E40500153500 /* GroupsModel.swift */; };
 		8DB9379B2B89ED8500153500 /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DB9379A2B89ED8500153500 /* PhotoModel.swift */; };
@@ -60,6 +63,9 @@
 		8D579C7A2B85E8A000053612 /* Arhive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Arhive.swift; sourceTree = "<group>"; };
 		8D579C7C2B85F76500053612 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		8D89270B2B880B5E001E3D5C /* FriendsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsModel.swift; sourceTree = "<group>"; };
+		8D8A36662B96FE0F008F48BD /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		8D8A36682B96FF23008F48BD /* CustomProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProfileCell.swift; sourceTree = "<group>"; };
+		8D8A366A2B970056008F48BD /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
 		8D90D4902B7E073C0030A8BC /* PhotoCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewController.swift; sourceTree = "<group>"; };
 		8DB937982B89E40500153500 /* GroupsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsModel.swift; sourceTree = "<group>"; };
 		8DB9379A2B89ED8500153500 /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
@@ -142,6 +148,7 @@
 		8D5259332B7352E100D63796 /* HW1_UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				8D8A36652B96FDDE008F48BD /* Profile */,
 				8D45E6FB2B8B3749009AA5D9 /* Photos */,
 				8D45E6FA2B8B372E009AA5D9 /* Groups */,
 				8D45E6F82B8B36A3009AA5D9 /* Friends */,
@@ -154,6 +161,16 @@
 				8D5259422B7352E400D63796 /* Info.plist */,
 			);
 			path = HW1_UIKit;
+			sourceTree = "<group>";
+		};
+		8D8A36652B96FDDE008F48BD /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				8D8A36662B96FE0F008F48BD /* ProfileViewController.swift */,
+				8D8A36682B96FF23008F48BD /* CustomProfileCell.swift */,
+				8D8A366A2B970056008F48BD /* ProfileModel.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,10 +312,13 @@
 				8D5259392B7352E100D63796 /* ViewController.swift in Sources */,
 				8D5259352B7352E100D63796 /* AppDelegate.swift in Sources */,
 				8D5259372B7352E100D63796 /* SceneDelegate.swift in Sources */,
+				8D8A366B2B970056008F48BD /* ProfileModel.swift in Sources */,
 				8D5068202B834C10004BE5DD /* CustomPhotoCell.swift in Sources */,
 				8D89270C2B880B5E001E3D5C /* FriendsModel.swift in Sources */,
 				8D579C7B2B85E8A000053612 /* Arhive.swift in Sources */,
+				8D8A36672B96FE0F008F48BD /* ProfileViewController.swift in Sources */,
 				8DB937992B89E40500153500 /* GroupsModel.swift in Sources */,
+				8D8A36692B96FF23008F48BD /* CustomProfileCell.swift in Sources */,
 				8D409D062B7CB03F00B5BD6D /* GroupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

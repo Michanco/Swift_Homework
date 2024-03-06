@@ -70,6 +70,25 @@ final class NetworkService{
         }.resume()
     }
     
+    func getProfileName (){
+        guard let url = URL(string: "https://api.vk.com/method/account.getProfileInfo?access_token=\(NetworkService.token)&v=5.131")
+        else{
+            return
+        }
+        session.dataTask(with: url) { (data, _, error) in
+            guard let data = data else {
+                return
+            }
+            do {
+                let profileName = try JSONDecoder().decode(Profile.self, from: data)
+                print(profileName)
+            } catch {
+                print(error)
+            }
+        }.resume()
+        
+    }
+    
 }
 
 

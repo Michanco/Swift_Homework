@@ -35,12 +35,14 @@ class ViewController: UIViewController{
         let tab2 = UINavigationController(rootViewController: GroupViewController())
         let controller = PhotoCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
         let tab3 = UINavigationController(rootViewController: controller)
+        let tab4 = UINavigationController(rootViewController: ProfileViewController())
         
         tab1.tabBarItem.title = "Friends"
         tab2.tabBarItem.title = "Groups"
         tab3.tabBarItem.title = "Photo"
+        tab4.tabBarItem.title = "Profile"
         
-        let controllers = [tab1, tab2, tab3]
+        let controllers = [tab1, tab2, tab3, tab4]
         
         let tabBarControllers = UITabBarController()
         tabBarControllers.viewControllers = controllers
